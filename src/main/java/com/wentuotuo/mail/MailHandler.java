@@ -36,8 +36,8 @@ public class MailHandler {
     public static void main(String[] args) throws Exception {
 
         MailHandler.init();
-        MailHandler.sendMail("ymhe@amarsoft.com",
-                "通知服务测试邮件", "no_root_squash：登入到NFS主机的用户如果是root，该用户即拥有root权限", false);
+        MailHandler.sendMail("2282238122@qq.com",
+                "大神吃鸡  ·额吧", "你就是大神吗？酷啊", false);
 
     }
 
@@ -79,12 +79,8 @@ public class MailHandler {
 
             Transport transport = session.getTransport();
 
-            //优先使用内网，再尝试外网
-            if (!connect(transport, 1)) {
-                WTT.getLog().info("使用内网连接出错，尝试使用外网连接");
-                if (!connect(transport, 2)) {
-                    WTT.getLog().error("尝试外网连接失败！请联系邮件服务器管理员");
-                }
+            if (!connect(transport, 2)) {
+                WTT.getLog().error("尝试外网连接失败！请联系邮件服务器管理员");
             }
 
             transport.sendMessage(message, message.getAllRecipients());
